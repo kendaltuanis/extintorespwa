@@ -1,0 +1,39 @@
+  $xs:300px;
+  $sm:576px;
+  $md:768px;
+  $lg:992px;
+  $xl:1200px;
+  
+
+  agm-map {
+    height: 300px;
+    width: 100%;
+  
+  }
+  
+  card{
+    margin: 0px!important;
+  }
+      
+  
+  // Extra Small devices (landscape phones, 320px and up)
+    @media (min-width: $xs) and (max-width: 575px) { 
+  
+       
+    }
+    
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width: $sm) { 
+
+     }
+    
+    // Medium devices (tablets, 768px and up)
+    @media (min-width: $md) {
+    
+    }
+    // Large devices (desktops, 992px and up)
+    @media (min-width: $lg) { 
+        
+            
+    }
+    

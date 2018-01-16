@@ -1,0 +1,94 @@
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                Datos Personales
+            </div>
+            <div class="card-block">
+
+                <form class="form" [formGroup]="personalForm">
+                    <section class="form-block">
+                        <div class="form-group row">
+                            <div class="col-lg-1 col-md-12 col-sm-12 col-xs-12">
+                                <label for="gForm_1">Nombre</label>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                                <input class="form-control" type="text" placeholder="Nombre" size="45" formControlName="name">
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                                <input class="form-control" type="text" placeholder="1° Apellido" size="35" formControlName="flastname">
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                                <input class="form-control" type="text" placeholder="2° Apellido" size="35" formControlName="slastname">
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                                <input class="form-control" type="text" placeholder="Cédula" size="35" formControlName="identification">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+                                <label for="gForm_3">Empresa</label>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <input class="form-control" type="text" id="gForm_4" placeholder="Empresa (si tiene)" size="35" formControlName="company">
+                            </div>
+                            <div class="col-lg-1 col-md-2 col-sm-12 col-xs-12">
+                                <label for="gForm_1">Tributación</label>
+                            </div>
+                            <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12">
+                                <input class="form-control" type="text" id="gForm_1" placeholder="Nombre a facturar" size="45" formControlName="taxname">
+                            </div>
+                        </div>
+                    </section>
+                </form>
+
+
+                <clr-alert [clrAlertType]="'alert-info'" (clrAlertClosedChange)="onClose()" *ngIf="update">
+                    <div class="alert-items">
+                        <div class="alert-icon-wrapper">
+                            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                            <button class="btn btn-sm alert-action" (click)="updateData()">Actualizar Datos</button>
+                        </div>
+                    </div>
+                </clr-alert>
+
+                <clr-stack-view>
+                    <clr-stack-header>Telefono</clr-stack-header>
+                    <clr-stack-block>
+                        <clr-stack-label>Agregados</clr-stack-label>
+                        <clr-stack-content>
+                            <div class="form-group row">
+                                <form [formGroup]="phones">
+                                    <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                                        <label for="gForm_1">Numero</label>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12">
+                                        <input class="form-control" type="text" id="gForm_1" placeholder="Código País" size="30" formControlName="countrycode" value="506">
+                                    </div>
+                                    <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                                        <input class="form-control" type="text" id="gForm_2" placeholder="Telefono" size="30" formControlName="phone">
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12">
+                                        <input class="form-control" type="text" id="gForm_3" placeholder="Ext" size="30" formControlName="extension">
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <br class="hidden-lg hidden-md" />
+                                        <button type="button" class="btn btn-icon btn-primary btn-block" (click)="addPhone();">
+                                            Agregar
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </clr-stack-content>
+                        <clr-stack-block *ngFor="let phones of phonesData">
+                            <clr-stack-label>({{phones.countrycode}}){{phones.phone}}-{{phones.extension}}</clr-stack-label>
+                            <clr-stack-content>
+                                <button class="btn btn-sm">Borrar</button>
+                            </clr-stack-content>
+                        </clr-stack-block>
+                    </clr-stack-block>
+                </clr-stack-view>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,252 @@
+﻿<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                Facturación
+                <div class="checkbox-inline float-xs-right">
+                    <input type="checkbox" id="checkboxCredit" (change)="cr" #cr>
+                    <label for="checkboxCredit">Crédito &nbsp;</label>
+                </div>
+            </div>
+            <div class="card-block">
+                <div class="form-group row" *ngIf="cr.checked">
+                    <div class="col-lg-1 col-md-2 col-sm-12 col-xs-12">
+                        <label for="gForm_1">Días de Crédito</label>
+                    </div>
+                    <div class="col-lg-4 col-md-5 col-sm-5 col-xs-5">
+                        <input class="form-control" type="number" id="gForm_1" placeholder="Días" size="25" [(ngModel)]="creditDays">
+                    </div>
+                </div>
+                <form [formGroup]="personalData" id="personalForm">
+                    <section class="form-block">
+                        <div class="form-group row">
+                            <div class="col-lg-1 col-md-2 col-sm-12 col-xs-12">
+                                <label for="gForm_1">Tributacion</label>
+                            </div>
+                            <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12">
+                                <input class="form-control" type="text" id="gForm_1" placeholder="Nombre a facturar" size="45" formControlName="taxname">
+                            </div>
+                            <div class="col-lg-1 col-md-2 col-sm-12 col-xs-12">
+                                <label for="gForm_1">Cédula Física/Jurídica</label>
+                            </div>
+                            <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12">
+                                <input class="form-control" type="text" id="gForm_1" placeholder="Cédula" size="45" formControlName="identification">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12">
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="toggle_2" (change)="en" #en>
+                                <label for="toggle_2">Es Empresa</label>
+                            </div>
+                        </div>
+                        <div class="form-group row" *ngIf="en.checked">
+                            <hr/>
+                            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+                                <label for="gForm_3">Empresa</label>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <input class="form-control" type="text" id="gForm_4" placeholder="Empresa (si tiene)" size="35" formControlName="company">
+                            </div>
+                        </div>
+                        <div class="form-group row" *ngIf="en.checked" formGroupName="userInCharge">
+                            <div class="col-lg-1 col-md-12 col-sm-12 col-xs-12">
+                                <label for="gForm_1">Encargado</label>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                                <input class="form-control" type="text" id="gForm_1" placeholder="Nombre" size="45" formControlName="name">
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                                <input class="form-control" type="text" id="gForm_2" placeholder="1 Apellido" size="35" formControlName="flastname">
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                                <input class="form-control" type="text" id="gForm_3" placeholder="2 Apellido" size="35" formControlName="slastname">
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                                <input class="form-control" type="text" id="gForm_1" placeholder="Cargo" size="45" formControlName="position">
+                            </div>
+                        </div>
+                    </section>
+                </form>
+                <clr-stack-view>
+                    <clr-stack-header>Telefono</clr-stack-header>
+                    <clr-stack-block>
+                        <clr-stack-label>Agregados</clr-stack-label>
+                        <clr-stack-content>
+                            <div class="form-group row">
+                                <form [formGroup]="phones">
+                                    <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                                        <label for="gForm_1">Numero</label>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12">
+                                        <input class="form-control" type="text" id="gForm_1" placeholder="Código País" size="20" formControlName="countrycode">
+                                    </div>
+                                    <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                                        <input class="form-control" type="text" id="gForm_2" placeholder="Telefono" size="20" formControlName="phone">
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12">
+                                        <input class="form-control" type="text" id="gForm_3" placeholder="Ext" size="20" formControlName="extension">
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <br class="hidden-lg hidden-md" />
+                                        <button type="button" class="btn btn-icon btn-primary btn-block" (click)="addPhone();">
+                                        Agregar
+                                    </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </clr-stack-content>
+                        <clr-stack-block *ngFor="let phones of phonesData">
+                            <clr-stack-label>({{phones.countrycode}}){{phones.phone}}-{{phones.extension}}</clr-stack-label>
+                            <clr-stack-content>
+                                <button class="btn btn-sm">Borrar</button>
+                            </clr-stack-content>
+                        </clr-stack-block>
+                    </clr-stack-block>
+                </clr-stack-view>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                Productos
+            </div>
+            <div class="card-block">
+                <div class="form-group row">
+                    <div class="col-lg-3 col-md-12 col-sm-4 col-xs-4">
+                        <label for="selects_1">Cant</label>
+                        <div class="select">
+                            <select id="selects_1" #selectCant>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-8 col-xs-8">
+                        <label for="selects_1">Tipo</label>
+                        <div class="select">
+                            <select (change)="onChange($event.target.value,selectServices,selectPrices)" id="selects_1" #selectType>
+                                    <option value="noption" disabled>Seleccione un tipo</option>
+                                <option *ngFor="let type of servicesTypes">
+                                  {{type}}
+                                </option>
+                             </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-7 col-xs-7">
+                        <br />
+
+                        <label for="selects_2">Producto</label>
+                        <div class="select">
+                            <select id="selects_2" #selectServices (change)="onChangeService(selectServices.value,selectType.value,selectPrices)">
+                                	<option value="noption" disabled>Seleccione un producto</option>
+                                        <option *ngFor="let key of arrayOfKeys"
+                                       >{{services[key].service}}
+                                </option>
+                            </select>
+
+                        </div>
+
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-5 col-xs-5">
+                        <br />
+                        <label for="selects_3">Precios</label>
+                        <div class="select">
+                            <select id="selects_3" #selectPrices>
+                                	<option value="noption" disabled>Seleccione un producto</option>
+                                        <option *ngFor="let price of pricesTemp"
+                                       [value]="price | json">{{price.price}}
+                                </option>
+                            </select>
+                        </div>
+                        <br class="hidden-lg hidden-md" />
+                        <button class="btn btn-primary" (click)="addService(selectCant.value,selectType.value,selectServices.value,selectPrices.value);">Agregar</button>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <hr class="hidden-lg hidden-md" />
+                        <clr-stack-view>
+                            <clr-stack-header>Agregados</clr-stack-header>
+
+                            <clr-stack-block [clrSbExpanded]="true">
+                                <clr-stack-label>Cant</clr-stack-label>
+                                <clr-stack-content>Producto</clr-stack-content>
+                                <clr-stack-block *ngFor="let item of serviceTemp; let i = index">
+                                    <clr-stack-label>{{item[0].quantity}}</clr-stack-label>
+                                    <clr-stack-content #i>{{item[0].typeservice}}:&nbsp;{{item[0].service}}<br />{{item[0].unitprice | currency:'CRC':'symbol-narrow':'1.2-2'}}<br /><button class="btn btn-primary btn-sm" (click)="clickBlock(i);">Borrar</button></clr-stack-content>
+                                </clr-stack-block>
+                            </clr-stack-block>
+                        </clr-stack-view>
+                        <fieldset *ngIf="serviceTemp.length>0">
+                            <form [formGroup]="discountData">
+                                <label class="label label-info left" *ngIf="discount.checked">Subtotal:{{getSum() | currency:'CRC':'symbol-narrow':'1.2-2'}}</label><br *ngIf="discount.checked" />
+                                <div class="checkbox-inline">
+                                    <input type="checkbox" id="othercheckbox" #discount (change)="discount">
+                                    <label for="othercheckbox">Descuento &nbsp;</label>
+                                </div><input class="label" *ngIf="discount.checked" style="width:10%!important" placeholder="%" formControlName="percentage" (change)="onChangePercentage();"><input *ngIf="discount.checked" class="label" formControlName="discount"
+                                    style="width:30%!important" readonly><br/>
+                                <label class="label label-info left">Total:{{getSumWithDiscount() | currency:'CRC':'symbol-narrow':'1.2-2'}}</label>
+                            </form>
+                        </fieldset>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                <button class="btn btn-primary btn-lg btn-block" (click)="open();">Facturar</button>
+            </div>
+        </div>
+        <agm-map [latitude]="lat" [longitude]="lng">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+    </div>
+    <clr-modal [(clrModalOpen)]="mdOpen">
+        <h3 class="modal-title">I have a nice title</h3>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="formFields_12">Fecha:</label>
+                <input type="date" id="formFields_12" size="35">
+                <agm-map [latitude]="lat" [longitude]="lng">
+                    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                </agm-map>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline" (click)="mdOpen = false">Cancel</button>
+            <button type="button" class="btn btn-primary" (click)="mdOpen = false">Ok</button>
+        </div>
+    </clr-modal>
+
+</div>
+
+<!--
+                                <clr-stack-block>
+                                    <clr-stack-label>1</clr-stack-label>
+                                    <clr-stack-content #bloque1>Ext 2.2lbs ABC<br />₡12.000,00<br /><button class="btn btn-primary btn-sm" (click)="clickBlock(bloque1.target.value);">Borrar</button></clr-stack-content>
+                                </clr-stack-block>
+                                <clr-stack-block>
+                                    <clr-stack-label>2</clr-stack-label>
+                                    <clr-stack-content #bloque2>Rp 10lbs ABC <br />₡24.000,00<br /><button class="btn btn-primary btn-sm" (click)="clickBlock(bloque2);">Borrar</button></clr-stack-content>
+                                </clr-stack-block>
+                                <clr-stack-block>
+                                    <clr-stack-label>1</clr-stack-label>
+                                    <clr-stack-content #bloque3>Man BC 10lbs<br />₡5.000,00<br /><button class="btn btn-primary btn-sm" (click)="clickBlock(bloque3.value);">Borrar</button></clr-stack-content>
+                                </clr-stack-block>
+
+
+ -->

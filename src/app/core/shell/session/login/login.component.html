@@ -1,0 +1,24 @@
+<div class="login-wrapper">
+    <form class="login" (ngSubmit)="login()" [formGroup]="loginForm">
+        <label class="title">
+            <h3 class="welcome">Bienvenido a</h3>
+            Extintores Universales
+        </label>
+        <div class="login-group">
+            <input class="username" type="text" id="login_username" placeholder="Email" required formControlName="email">
+            <input class="password" type="password" id="login_password" placeholder="Contraseña" required formControlName="password">
+            <div class="checkbox">
+                <input type="checkbox" id="rememberme">
+                <label for="rememberme">
+                    Recuérdame
+                </label>
+            </div>
+            <div class="error active" hidden>
+                Usuario o contraseña inválida
+            </div>
+            <button class="btn btn-primary">Entrar</button>
+
+            <a href="javascript://" class="signup">Registrarse</a>
+        </div>
+    </form>
+</div>

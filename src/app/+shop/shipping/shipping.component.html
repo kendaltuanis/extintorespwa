@@ -1,0 +1,117 @@
+﻿<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                Direcciones Agregadas
+            </div>
+            <form>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+
+
+                        <clr-datagrid>
+                            <clr-dg-column>CP</clr-dg-column>
+                            <clr-dg-column>GPS</clr-dg-column>
+                            <clr-dg-column></clr-dg-column>
+
+                            <clr-dg-row *clrDgItems="let user of users">
+                                <clr-dg-cell>{{user.cp}}</clr-dg-cell>
+                                <clr-dg-cell><a>{{user.gps}}</a></clr-dg-cell>
+                                <clr-dg-cell> <button class="btn btn-primary btn-sm">Borrar</button></clr-dg-cell>
+
+                                <clr-dg-row-detail *clrIfExpanded>
+                                    {{user.creation}}
+                                </clr-dg-row-detail>
+                            </clr-dg-row>
+
+
+
+                            <clr-dg-footer>{{users.length}} Direcciones</clr-dg-footer>
+                        </clr-datagrid>
+
+
+
+
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                Agregar nueva dirección
+            </div>
+            <div class="card-block">
+                <div class="form-group row">
+                    <form>
+                        <section class="form-block">
+                            <div class="form-group row">
+                                <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12">
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="toggle_2" (change)="cp" #cp>
+                                        <label for="toggle_2">Conoce el código postal</label>
+                                    </div>
+                                </div>
+                                <div *ngIf="cp.checked" class="col-lg-4 col-md-5 col-sm-12 col-xs-12">
+                                    <label for="selects_1">Ingrese el código postal</label>
+                                    <input class="form-control" type="text" id="gForm_1" value="21004" placeholder="Código postal" size="45">
+                                </div>
+                            </div>
+                            <div class="form-group row" *ngIf="!cp.checked">
+                                <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                                    <label for="selects_1">Provincia</label>
+                                    <div class="select">
+                                        <select id="selects_1">
+                                            <option>Alajuela</option>
+                                            <option>Venta</option>
+                                            <option>Mantenimiento</option>
+                                            <option>Accesorios</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                                    <label for="selects_1">Cantón</label>
+                                    <div class="select">
+                                        <select id="selects_1">
+                                            <option>San Carlos</option>
+                                            <option>Venta</option>
+                                            <option>Mantenimiento</option>
+                                            <option>Accesorios</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                                    <label for="selects_1">Distrito</label>
+                                    <div class="select">
+                                        <select id="selects_1">
+                                            <option>Aguas Zarcas</option>
+                                            <option>Venta</option>
+                                            <option>Mantenimiento</option>
+                                            <option>Accesorios</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12">
+                                    <input class="form-control" type="text" id="gForm_1" placeholder="Barrio" size="45">
+                                </div>
+                            </div>
+                        </section>
+                        <button class="btn btn-primary btn-lg btn-block">Agregar</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <hr />
+    </div>
+
+</div>

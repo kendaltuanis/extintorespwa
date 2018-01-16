@@ -1,0 +1,29 @@
+﻿<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                Lista
+            </div>
+            <clr-datagrid class="datagrid-compact">
+                <clr-dg-column [clrDgField]="'nombre'">Nombre</clr-dg-column>
+                <clr-dg-column [clrDgField]="'empresa'">Empresa</clr-dg-column>
+                <clr-dg-column [clrDgField]="'telefono'">Teléfono</clr-dg-column>
+
+                <clr-dg-row *clrDgItems="let user of users">
+                    <clr-dg-cell>{{user.nombre}}</clr-dg-cell>
+                    <clr-dg-cell><a>{{user.empresa}}</a></clr-dg-cell>
+                    <clr-dg-cell><a>{{user.telefono}}</a></clr-dg-cell>
+
+                    <clr-dg-row-detail *clrIfExpanded [clrDgReplace]="true" [innerHTML]="user.producto">
+                    </clr-dg-row-detail>
+                </clr-dg-row>
+
+
+
+                <clr-dg-footer>{{users.length}} Clientes</clr-dg-footer>
+            </clr-datagrid>
+        </div>
+    </div>
+
+
+</div>

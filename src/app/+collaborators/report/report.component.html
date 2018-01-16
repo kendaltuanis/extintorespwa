@@ -1,0 +1,105 @@
+﻿<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                Reporte
+            </div>
+            <div class="card-block">
+                <form>
+                    <section class="form-block">
+                        <div class="form-group row">
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                                <input class="form-control" type="number" id="gForm_1" placeholder="Gasolina" size="45">
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                                <input class="form-control" type="number" id="gForm_1" placeholder="Kilometraje" size="45">
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <clr-stack-view>
+                                    <clr-stack-header>Otros Gastos</clr-stack-header>
+                                    <clr-stack-block>
+                                        <clr-stack-label>Abrir</clr-stack-label>
+                                        <clr-stack-content>
+                                            <div class="form-group row">
+                                                <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                                                    <input class="form-control" type="number" id="gForm_1" placeholder="Gasto" size="45">
+                                                </div>
+                                                <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12">
+                                                    <input class="form-control" type="text" id="gForm_2" placeholder="Detalle" size="35">
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                                    <br class="hidden-lg hidden-md" />
+                                                    <button type="button" class="btn btn-icon btn-primary btn-block">
+                                                        Agregar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </clr-stack-content>
+                                        <clr-stack-block>
+                                            <clr-stack-label>₡3.500,00</clr-stack-label>
+                                            <clr-stack-content>Comida<br /><br /><button class="btn btn-primary btn-sm">Borrar</button></clr-stack-content>
+                                        </clr-stack-block>
+                                        <clr-stack-block>
+                                            <clr-stack-label>₡12.000,00</clr-stack-label>
+                                            <clr-stack-content>Balde del polvo <br /><br /><button class="btn btn-primary btn-sm">Borrar</button></clr-stack-content>
+                                        </clr-stack-block>
+                                    </clr-stack-block>
+                                </clr-stack-view>
+                            </div>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                Facturas
+            </div>
+            <div class="card-block">
+                <div class="form-group row">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <clr-stack-view>
+                            <clr-stack-block [clrSbExpanded]="true">
+                                <clr-stack-label>Factura</clr-stack-label>
+                                <clr-stack-content>Producto</clr-stack-content>
+                                <clr-stack-block>
+                                    <clr-stack-label>12838</clr-stack-label>
+                                    <clr-stack-content>Ext 2.2lbs ABC<br />₡12.000,00</clr-stack-content>
+                                </clr-stack-block>
+                                <clr-stack-block>
+                                    <clr-stack-label>12839</clr-stack-label>
+                                    <clr-stack-content>Rp 10lbs ABC <br />₡24.000,00</clr-stack-content>
+                                </clr-stack-block>
+                                <clr-stack-block>
+                                    <clr-stack-label>12840</clr-stack-label>
+                                    <clr-stack-content>Man BC 10lbs<br />₡5.000,00</clr-stack-content>
+                                </clr-stack-block>
+                            </clr-stack-block>
+                        </clr-stack-view>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                <button class="btn btn-primary btn-lg btn-block" (click)="open();">Reportar</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
