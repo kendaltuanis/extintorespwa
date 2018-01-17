@@ -1,4 +1,4 @@
-/*var CronJob = require('cron').CronJob;
+var CronJob = require('cron').CronJob;
 var nodemailer = require('nodemailer');
 
 var transporter = nodemailer.createTransport({
@@ -32,4 +32,4 @@ var job = new CronJob({
   start: false,
   timeZone: 'America/Los_Angeles'
 });
-job.start();*/
+job.start();

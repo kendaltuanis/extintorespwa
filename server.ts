@@ -23,6 +23,16 @@ import { RouterApiServices } from './src/backend/models/services/controller.rout
 const mongoose = require('mongoose');
 mongoose.connect("mongodb://localhost/extintoresuniversales");
 
+var https = require('https');
+var fs = require('fs');
+
+var options = {
+  key: fs.readFileSync('node_modules/browser-sync/certs/server.key'),
+  cert: fs.readFileSync('node_modules/browser-sync/certs/server.crt'),
+  requestCert: false,
+  rejectUnauthorized: false
+};
+
 // Faster server renders w/ Prod mode (dev mode never needed)
 enableProdMode();
 
@@ -85,7 +95,7 @@ app.get('*', (req, res) => {
   res.render('index', { req });
 });
 
-// Start up the Node server
-app.listen(PORT, () => {
-  console.log(`Node Express server listening on http://localhost:${PORT}`);
+var server = https.createServer(options, app).listen(PORT, () => {
+  console.log(`Node Express server listening on https://localhost:${PORT}`);
 });
+// Start up the Node server

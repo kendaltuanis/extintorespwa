@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild, HostListener } from "@angular/core";
+import { Component, OnInit, ViewChild, HostListener, PLATFORM_ID, Inject } from "@angular/core";
 import { Wizard } from "clarity-angular";
 import { FormGroup, FormBuilder, FormControl, Validators } from "@angular/forms";
 import { BillingService } from "../../core/_services/billing.service";
 import { Client, InCharge, Phone, Service, Invoice, Discount } from "../../core/_models/Billing";
 import { ServicesDataService } from "../../core/_services/services-data.service";
 import { Services, Prices } from "../../core/_models/Services";
-import { CurrencyPipe } from '@angular/common'
+import { CurrencyPipe, isPlatformBrowser } from '@angular/common'
 import { NoCurrencyPipe } from "../../core/_helpers/_pipes/no-currency.pipe";
 import { AgmMap, GoogleMapsAPIWrapper, AgmCoreModule } from "@agm/core";
 import { GeolocationService } from "../../core/_services/geolocation.service";
@@ -84,7 +84,7 @@ export class BillingComponent implements OnInit {
 
 
 
-  constructor(private gs: GeolocationService, private fb: FormBuilder, private billingService: BillingService, private servicesService: ServicesDataService, private cp: CurrencyPipe, private cpn: NoCurrencyPipe) {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object,private gs: GeolocationService, private fb: FormBuilder, private billingService: BillingService, private servicesService: ServicesDataService, private cp: CurrencyPipe, private cpn: NoCurrencyPipe) {
 
     
     this.createForm();
@@ -94,13 +94,17 @@ export class BillingComponent implements OnInit {
 
 
   ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      // do client side stuff
+      this.gs.getLocation().subscribe(rep => {
+        // do something with Rep, Rep will have the data you desire.
+        console.log();
+        this.lat=rep.coords.latitude;
+        this.lng=rep.coords.longitude;
+      });
+      
+  }
 
-this.gs.getLocation().subscribe(rep => {
-  // do something with Rep, Rep will have the data you desire.
-  console.log();
-  this.lat=rep.coords.latitude;
-  this.lng=rep.coords.longitude;
-});
 
     /*
       console.log(this.map.latitude);

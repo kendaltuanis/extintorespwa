@@ -9,8 +9,8 @@ import { isPlatformServer, isPlatformBrowser } from '@angular/common';
 @Component({
     selector: 'ext-shell',
     template: `
-  <clr-main-container *ngIf="currentUser!=null; else home">
-      <ext-navbar></ext-navbar>
+    <clr-main-container *ngIf="currentUser!=null; else home">
+    <ext-navbar></ext-navbar>
   
   <div class="content-container">
       <main class="content-area">
