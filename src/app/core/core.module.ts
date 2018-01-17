@@ -9,11 +9,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { CoreRoutingModule } from './core.routing';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AuthGuard } from './_services/auth.guard';
-import { AuthenticationService } from './_services/Authentication.service';
 import { LoginComponent } from './shell/session/login/login.component';
 import { customHttpProvider } from './_helpers/custom-http.service';
 import { HttpModule } from '@angular/http';
 import { NoCurrencyPipe } from './_helpers/_pipes/no-currency.pipe'; 
+import { AuthenticationService } from './_services/authentication.service';
 
 
 
